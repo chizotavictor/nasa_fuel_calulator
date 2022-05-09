@@ -25,7 +25,9 @@ class NasaFuelCalulator():
 
             sm = fuel_weight_for_land + fuel_weight_for_launch
             total_weight = total_weight + sm
-        return total_weight
+
+        total_weight = total_weight
+        return round(total_weight, 2)
 
     def calculate_fuel_for_lauch(self, target):
         weights = []
@@ -64,11 +66,17 @@ class NasaFuelCalulator():
 # Apollo 11
 fsm = 28801
 travel = [(9.807, 1.62), (1.62, 9.807)]
+result = NasaFuelCalulator(fsm, travel)
+print("Weight of fuel: " + str(result.calculate_fuel()) + "\n")
 
 # Mission on Mars
-# fsm = 14606
-# travel = [(9.807, 3.711), (3.711, 9.807)]
-
+fsm = 14606
+travel = [(9.807, 3.711), (3.711, 9.807)]
 result = NasaFuelCalulator(fsm, travel)
+print("Weight of fuel: " + str(result.calculate_fuel()) + "\n")
 
-print("weight of fuel: " + str(result.calculate_fuel()))
+# Passenger ship
+fsm = 75432
+travel = [(9.807, 1.62), (1.62, 3.711), (3.711, 9.807)]
+result = NasaFuelCalulator(fsm, travel)
+print("Weight of fuel: " + str(result.calculate_fuel()) + "\n")
